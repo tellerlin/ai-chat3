@@ -13,8 +13,13 @@ interface ChatInputProps {
 export const ChatInput = ({ onSubmit, isLoading }: ChatInputProps) => {
   const [input, setInput] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (e: any) => {
+    if (!(e instanceof Event)) {
+      throw new TypeError('Expected an Event but got ' + typeof e);
+    }
+    if (e.preventDefault) {
+      e.preventDefault();
+    }
     if (!input.trim()) return;
     onSubmit(input);
     setInput('');
