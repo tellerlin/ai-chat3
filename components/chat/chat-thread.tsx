@@ -41,7 +41,7 @@ export const ChatThread = () => {
         </div>
       </ScrollArea>
 
-      <ChatInput onSubmit={(e) => { e.preventDefault(); handleSubmit(input); }} isLoading={isLoading} />
+      <ChatInput onSubmit={handleSubmit} isLoading={isLoading} />
     </div>
   );
 };
